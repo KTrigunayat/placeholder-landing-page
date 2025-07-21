@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 340 15% 97%;
+    --background: 320 30% 96%;
     --foreground: 230 15% 15%;
 
     --card: 0 0% 100%;
@@ -17,30 +17,30 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 230 15% 15%;
 
-    --primary: 260 85% 65%;
+    --primary: 270 80% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 320 25% 90%;
+    --secondary: 320 20% 92%;
     --secondary-foreground: 230 15% 15%;
 
-    --muted: 320 20% 95%;
+    --muted: 320 15% 94%;
     --muted-foreground: 230 10% 50%;
 
-    --accent: 280 70% 80%;
+    --accent: 280 60% 70%;
     --accent-foreground: 230 15% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 320 20% 90%;
-    --input: 320 20% 90%;
-    --ring: 260 85% 65%;
+    --border: 320 15% 88%;
+    --input: 320 15% 88%;
+    --ring: 270 80% 60%;
 
-    /* Custom gradients for the design */
-    --gradient-primary: linear-gradient(135deg, hsl(280 70% 75%) 0%, hsl(260 85% 65%) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(320 60% 85%) 0%, hsl(280 70% 80%) 100%);
-    --gradient-purple: linear-gradient(135deg, hsl(280 70% 50%) 0%, hsl(260 85% 35%) 100%);
-    --gradient-light: linear-gradient(135deg, hsl(340 30% 95%) 0%, hsl(320 25% 90%) 100%);
+    /* Exact gradients from the design */
+    --gradient-primary: linear-gradient(135deg, hsl(270 80% 60%) 0%, hsl(260 90% 50%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(320 40% 85%) 0%, hsl(300 50% 80%) 100%);
+    --gradient-purple: linear-gradient(135deg, hsl(270 70% 45%) 0%, hsl(260 80% 35%) 100%);
+    --gradient-light: linear-gradient(135deg, hsl(320 25% 95%) 0%, hsl(310 20% 92%) 100%);
 
     --radius: 1rem;
 
