@@ -1,67 +1,59 @@
 const WhyChooseSection = () => {
   const features = [
     {
-      title: "AI-Powered Insights",
-      description: "Get intelligent recommendations tailored to your workflow"
+      icon: "🤖",
+      title: "AI Assistance",
+      description: "Get intelligent recommendations and automate routine planning tasks with advanced AI technology."
     },
     {
-      title: "WhatsApp Integration", 
-      description: "Organize your tasks through familiar messaging interface"
+      icon: "✅",
+      title: "Task Management",
+      description: "Organize and track your event tasks efficiently with our comprehensive management system."
     },
     {
-      title: "Smart Automation",
-      description: "Automate repetitive tasks and focus on what matters most"
+      icon: "👥",
+      title: "Chat Support",
+      description: "Communicate seamlessly with your team and vendors through integrated chat features."
+    },
+    {
+      icon: "📊",
+      title: "Analytics Dashboard",
+      description: "Monitor your event progress with detailed analytics and performance insights."
+    },
+    {
+      icon: "🔧",
+      title: "Vendor Management",
+      description: "Coordinate with vendors efficiently and manage all your service providers in one place."
+    },
+    {
+      icon: "📍",
+      title: "Event Tracking",
+      description: "Track every aspect of your events from planning to execution with comprehensive monitoring tools."
     }
   ];
 
   return (
-    <section className="w-full py-20 px-6 bg-background">
+    <section id="features" className="w-full py-20 px-6" style={{backgroundColor: '#f3d3da'}}>
       <div className="max-w-7xl mx-auto text-center">
         <div className="space-y-16">
           {/* Header */}
           <div className="space-y-4">
-            <h2 className="text-3xl lg:text-5xl font-bold">
-              Why Choose <span className="bg-gradient-primary bg-clip-text text-transparent">PLANVIA?</span>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-800">
+              Why Choose PLANVIA?
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Experience the perfect blend of simplicity and power with our innovative approach to productivity.
-            </p>
           </div>
 
           {/* Feature grid */}
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {features.map((feature, index) => (
-              <div key={index} className="space-y-6">
-                <div className="aspect-square bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl flex items-center justify-center border border-border/20">
-                  <div className="text-center space-y-3">
-                    <div className="w-12 h-12 bg-gradient-primary rounded-xl mx-auto flex items-center justify-center">
-                      <div className="w-6 h-6 bg-white rounded opacity-80"></div>
-                    </div>
-                    <div className="text-sm text-muted-foreground">Feature Preview</div>
-                  </div>
-                </div>
+              <div key={index} className="bg-gradient-to-br from-purple-500 to-purple-700 rounded-3xl p-8 text-white space-y-4">
+                <div className="text-4xl">{feature.icon}</div>
                 <div className="space-y-2">
-                  <h3 className="text-xl font-semibold">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
+                  <h3 className="text-xl font-bold">{feature.title}</h3>
+                  <p className="text-purple-100 text-sm leading-relaxed">{feature.description}</p>
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Purple gradient cards */}
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="aspect-[2/1] bg-gradient-purple rounded-2xl p-8 flex items-center justify-center text-white">
-              <div className="text-center space-y-4">
-                <h3 className="text-2xl font-bold">Boost Productivity by 300%</h3>
-                <p className="text-white/80">Transform your workflow with AI-driven insights</p>
-              </div>
-            </div>
-            <div className="aspect-[2/1] bg-gradient-purple rounded-2xl p-8 flex items-center justify-center text-white">
-              <div className="text-center space-y-4">
-                <h3 className="text-2xl font-bold">Save 10+ Hours Weekly</h3>
-                <p className="text-white/80">Automate routine tasks and focus on growth</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
