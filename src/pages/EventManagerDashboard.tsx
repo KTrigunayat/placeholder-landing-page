@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Input } from '@/components/ui/input';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { 
   Home, 
   Calendar, 
@@ -16,11 +18,20 @@ import {
   Settings,
   Send,
   Plus,
-  CalendarDays
+  CalendarDays,
+  LogOut
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { CreateEventModal } from '@/components/CreateEventModal';
 
 const EventManagerDashboard = () => {
+  const navigate = useNavigate();
+  const [createEventOpen, setCreateEventOpen] = useState(false);
+  const [chatMessages, setChatMessages] = useState([
+    { type: 'ai', content: 'Hello! I\'m here to help you plan your events. Ask me anything about vendor management, timeline planning, or budget optimization.' }
+  ]);
+  const [chatInput, setChatInput] = useState('');
+
   const sidebarLinks = [
     { name: 'Home', icon: Home, active: true },
     { name: 'Events', icon: Calendar, active: false },
@@ -44,6 +55,20 @@ const EventManagerDashboard = () => {
     'Confirm menu selection',
     'Send invitations to vendors'
   ];
+
+  const handleLogout = () => {
+    navigate('/');
+  };
+
+  const sendChatMessage = () => {
+    if (!chatInput.trim()) return;
+    
+    setChatMessages(prev => [...prev, 
+      { type: 'user', content: chatInput },
+      { type: 'ai', content: 'That\'s a great suggestion! Based on your current events, I can help you optimize your timeline and suggest the best vendors for your requirements.' }
+    ]);
+    setChatInput('');
+  };
 
   return (
     <div className="min-h-screen bg-background flex">
@@ -74,6 +99,18 @@ const EventManagerDashboard = () => {
               </li>
             ))}
           </ul>
+          
+          {/* Logout Button */}
+          <div className="mt-4 pt-4 border-t border-gray-700">
+            <Button
+              onClick={handleLogout}
+              variant="ghost"
+              className="w-full justify-start text-gray-300 hover:bg-gray-800 hover:text-white"
+            >
+              <LogOut className="mr-3 h-5 w-5" />
+              Log Out
+            </Button>
+          </div>
         </nav>
 
         {/* Bottom Logo and Settings */}
@@ -88,11 +125,15 @@ const EventManagerDashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 p-8">
+      <div className="flex-1 p-8 bg-[#f3d3da]">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold text-foreground">Welcome Back, Priya</h1>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full">
+          <Button 
+            size="lg" 
+            onClick={() => setCreateEventOpen(true)}
+            className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full"
+          >
             CREATE A NEW EVENT
           </Button>
         </div>
@@ -101,23 +142,37 @@ const EventManagerDashboard = () => {
           {/* Left Column */}
           <div className="space-y-8">
             {/* PLANVIA AI Widget */}
-            <Card className="shadow-lg border-0 bg-card">
+            <Card className="border-0 bg-card shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),2px_2px_8px_rgba(0,0,0,0.15)] rounded-xl">
               <CardHeader>
                 <CardTitle className="text-xl font-bold">PLANVIA AI</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="bg-muted p-4 rounded-lg">
-                  <p className="text-sm text-muted-foreground">
-                    Hello! I'm here to help you plan your events. Ask me anything about vendor management, 
-                    timeline planning, or budget optimization.
-                  </p>
-                </div>
+                <ScrollArea className="h-48 w-full">
+                  <div className="space-y-3 pr-4">
+                    {chatMessages.map((message, index) => (
+                      <div
+                        key={index}
+                        className={cn(
+                          "p-3 rounded-lg max-w-[85%]",
+                          message.type === 'ai' 
+                            ? "bg-muted text-foreground" 
+                            : "bg-primary text-primary-foreground ml-auto"
+                        )}
+                      >
+                        <p className="text-sm">{message.content}</p>
+                      </div>
+                    ))}
+                  </div>
+                </ScrollArea>
                 <div className="flex items-center space-x-2">
                   <Input 
+                    value={chatInput}
+                    onChange={(e) => setChatInput(e.target.value)}
                     placeholder="Ask PLANVIA AI..." 
                     className="flex-1"
+                    onKeyDown={(e) => e.key === 'Enter' && sendChatMessage()}
                   />
-                  <Button size="icon" variant="outline">
+                  <Button size="icon" variant="outline" onClick={sendChatMessage}>
                     <Send className="h-4 w-4" />
                   </Button>
                 </div>
@@ -125,7 +180,7 @@ const EventManagerDashboard = () => {
             </Card>
 
             {/* Upcoming Events Widget */}
-            <Card className="shadow-lg border-0 bg-card">
+            <Card className="border-0 bg-card shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),2px_2px_8px_rgba(0,0,0,0.15)] rounded-xl">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-xl font-bold">Your Upcoming Events</CardTitle>
                 <Button variant="outline" size="sm">
@@ -162,7 +217,7 @@ const EventManagerDashboard = () => {
           {/* Right Column - Smaller Widgets */}
           <div className="grid grid-cols-2 gap-4">
             {/* Finance Widget */}
-            <Card className="shadow-lg border-0 bg-card">
+            <Card className="border-0 bg-card shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),2px_2px_8px_rgba(0,0,0,0.15)] rounded-xl">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg">Finance</CardTitle>
               </CardHeader>
@@ -173,7 +228,7 @@ const EventManagerDashboard = () => {
             </Card>
 
             {/* Consultation Widget */}
-            <Card className="shadow-lg border-0 bg-card">
+            <Card className="border-0 bg-card shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),2px_2px_8px_rgba(0,0,0,0.15)] rounded-xl">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg">Consultation</CardTitle>
               </CardHeader>
@@ -184,7 +239,7 @@ const EventManagerDashboard = () => {
             </Card>
 
             {/* Tasks Widget */}
-            <Card className="shadow-lg border-0 bg-card col-span-2">
+            <Card className="border-0 bg-card shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),2px_2px_8px_rgba(0,0,0,0.15)] rounded-xl col-span-2">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg">Urgent Tasks</CardTitle>
               </CardHeader>
@@ -204,7 +259,7 @@ const EventManagerDashboard = () => {
             </Card>
 
             {/* Vendor Widget */}
-            <Card className="shadow-lg border-0 bg-card col-span-2">
+            <Card className="border-0 bg-card shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),2px_2px_8px_rgba(0,0,0,0.15)] rounded-xl col-span-2">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg">Vendor</CardTitle>
               </CardHeader>
@@ -216,6 +271,9 @@ const EventManagerDashboard = () => {
           </div>
         </div>
       </div>
+      
+      {/* Create Event Modal */}
+      <CreateEventModal open={createEventOpen} onOpenChange={setCreateEventOpen} />
     </div>
   );
 };
