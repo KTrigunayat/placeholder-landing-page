@@ -48,6 +48,11 @@ const LoginPage = () => {
     e.preventDefault();
     // Handle login logic here
     console.log('Login attempt:', { email, password, userType });
+    
+    // Redirect to appropriate dashboard based on user type
+    if (userType === 'event-manager') {
+      window.location.href = '/dashboard/event-manager';
+    }
   };
 
   return (

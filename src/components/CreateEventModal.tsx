@@ -364,8 +364,9 @@ export const CreateEventModal: React.FC<CreateEventModalProps> = ({ open, onOpen
                 {[1, 2, 3, 4, 5].map(step => (
                   <div
                     key={step}
+                    onClick={() => setCurrentStep(step)}
                     className={cn(
-                      "w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium",
+                      "w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium cursor-pointer hover:opacity-80 transition-opacity",
                       step <= currentStep ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
                     )}
                   >
@@ -376,8 +377,10 @@ export const CreateEventModal: React.FC<CreateEventModalProps> = ({ open, onOpen
               <span className="ml-4 text-sm text-muted-foreground">Step {currentStep} of 5</span>
             </div>
             
-            <ScrollArea className="h-[calc(100%-120px)]">
-              {renderStep()}
+            <ScrollArea className="h-[calc(100%-120px)] pr-4">
+              <div className="space-y-6 pr-2">
+                {renderStep()}
+              </div>
             </ScrollArea>
             
             <div className="flex justify-between mt-6 pt-4 border-t">
