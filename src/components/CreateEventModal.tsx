@@ -88,22 +88,23 @@ export const CreateEventModal: React.FC<CreateEventModalProps> = ({ open, onOpen
     switch (currentStep) {
       case 1:
         return (
-          <div className="space-y-6">
-            <h3 className="text-lg font-semibold mb-4">Core Wedding Details</h3>
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Core Wedding Details</h3>
             
-            <div>
-              <Label htmlFor="clientName">Client Name</Label>
+            <div className="space-y-2">
+              <Label htmlFor="clientName" className="text-sm font-medium">Client Name</Label>
               <Input
                 id="clientName"
                 value={formData.clientName}
                 onChange={(e) => setFormData(prev => ({ ...prev, clientName: e.target.value }))}
-                className="mt-1"
+                className="border border-gray-200"
+                placeholder="Enter client name"
               />
             </div>
 
-            <div>
-              <Label>Wedding Functions</Label>
-              <div className="grid grid-cols-2 gap-3 mt-2">
+            <div className="space-y-2">
+              <Label className="text-sm font-medium">Wedding Functions</Label>
+              <div className="grid grid-cols-2 gap-2">
                 {functions.map(func => (
                   <div key={func} className="flex items-center space-x-2">
                     <Checkbox
@@ -111,32 +112,31 @@ export const CreateEventModal: React.FC<CreateEventModalProps> = ({ open, onOpen
                       checked={formData.weddingFunctions.includes(func)}
                       onCheckedChange={(checked) => handleCheckboxChange('weddingFunctions', func, checked as boolean)}
                     />
-                    <Label htmlFor={func} className="text-sm">{func}</Label>
+                    <Label htmlFor={func} className="text-xs">{func}</Label>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div>
-              <Label>Function Dates</Label>
-              <div className="grid grid-cols-1 gap-3 mt-2">
+            <div className="space-y-2">
+              <Label className="text-sm font-medium">Function Dates</Label>
+              <div className="space-y-2">
                 {formData.weddingFunctions.map(func => (
-                  <div key={func} className="flex items-center space-x-3">
-                    <Label className="w-32 text-sm">{func}:</Label>
+                  <div key={func} className="flex items-center space-x-2">
+                    <Label className="w-24 text-xs flex-shrink-0">{func}:</Label>
                     <Popover>
                       <PopoverTrigger asChild>
-                        <Button variant="outline" className="justify-start text-left font-normal">
-                          <CalendarIcon className="mr-2 h-4 w-4" />
-                          {formData.functionDates[func] ? format(formData.functionDates[func], "PPP") : "Pick a date"}
+                        <Button variant="outline" className="justify-start text-left font-normal text-xs h-8">
+                          <CalendarIcon className="mr-1 h-3 w-3" />
+                          {formData.functionDates[func] ? format(formData.functionDates[func], "MMM dd") : "Pick date"}
                         </Button>
                       </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0">
+                      <PopoverContent className="w-auto p-0" align="start">
                         <Calendar
                           mode="single"
                           selected={formData.functionDates[func]}
                           onSelect={(date) => handleDateChange(func, date)}
                           initialFocus
-                          className="pointer-events-auto"
                         />
                       </PopoverContent>
                     </Popover>
@@ -145,36 +145,38 @@ export const CreateEventModal: React.FC<CreateEventModalProps> = ({ open, onOpen
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="guestCount">Total Guest Count</Label>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="space-y-2">
+                <Label htmlFor="guestCount" className="text-sm font-medium">Guest Count</Label>
                 <Input
                   id="guestCount"
                   type="number"
                   value={formData.guestCount}
                   onChange={(e) => setFormData(prev => ({ ...prev, guestCount: e.target.value }))}
-                  className="mt-1"
+                  className="border border-gray-200"
+                  placeholder="0"
                 />
               </div>
-              <div>
-                <Label htmlFor="budget">Overall Budget ($)</Label>
+              <div className="space-y-2">
+                <Label htmlFor="budget" className="text-sm font-medium">Budget ($)</Label>
                 <Input
                   id="budget"
                   type="number"
                   value={formData.budget}
                   onChange={(e) => setFormData(prev => ({ ...prev, budget: e.target.value }))}
-                  className="mt-1"
+                  className="border border-gray-200"
+                  placeholder="0"
                 />
               </div>
             </div>
 
-            <div>
-              <Label htmlFor="clientVision">Client's Vision</Label>
+            <div className="space-y-2">
+              <Label htmlFor="clientVision" className="text-sm font-medium">Client's Vision</Label>
               <Textarea
                 id="clientVision"
                 value={formData.clientVision}
                 onChange={(e) => setFormData(prev => ({ ...prev, clientVision: e.target.value }))}
-                className="mt-1 h-24"
+                className="border border-gray-200 h-20 resize-none"
                 placeholder="Describe your ideal wedding vision, preferences, and any special requirements..."
               />
             </div>
