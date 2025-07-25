@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import LoginPage from "./pages/LoginPage";
 import NotFound from "./pages/NotFound";
 import EventManagerDashboard from "./pages/EventManagerDashboard";
+import VendorsPage from "./pages/VendorsPage";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/login" element={<LoginPage />} />
           <Route path="/login/:userType" element={<LoginPage />} />
           <Route path="/dashboard/event-manager" element={<EventManagerDashboard />} />
+          <Route path="/dashboard/event-manager/vendors" element={<VendorsPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

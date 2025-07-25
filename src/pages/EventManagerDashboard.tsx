@@ -85,7 +85,7 @@ const EventManagerDashboard = () => {
             {sidebarLinks.map((link) => (
               <li key={link.name}>
                 <a
-                  href="#"
+                  href={link.name === 'Vendors' ? '/dashboard/event-manager/vendors' : '#'}
                   className={cn(
                     "flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors",
                     link.active
