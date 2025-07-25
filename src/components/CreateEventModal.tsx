@@ -97,7 +97,7 @@ export const CreateEventModal: React.FC<CreateEventModalProps> = ({ open, onOpen
                 id="clientName"
                 value={formData.clientName}
                 onChange={(e) => setFormData(prev => ({ ...prev, clientName: e.target.value }))}
-                className="border border-gray-200"
+                className="border border-gray-300"
                 placeholder="Enter client name"
               />
             </div>
@@ -153,7 +153,7 @@ export const CreateEventModal: React.FC<CreateEventModalProps> = ({ open, onOpen
                   type="number"
                   value={formData.guestCount}
                   onChange={(e) => setFormData(prev => ({ ...prev, guestCount: e.target.value }))}
-                  className="border border-gray-200"
+                  className="border border-gray-300"
                   placeholder="0"
                 />
               </div>
@@ -164,7 +164,7 @@ export const CreateEventModal: React.FC<CreateEventModalProps> = ({ open, onOpen
                   type="number"
                   value={formData.budget}
                   onChange={(e) => setFormData(prev => ({ ...prev, budget: e.target.value }))}
-                  className="border border-gray-200"
+                  className="border border-gray-300"
                   placeholder="0"
                 />
               </div>
@@ -176,7 +176,7 @@ export const CreateEventModal: React.FC<CreateEventModalProps> = ({ open, onOpen
                 id="clientVision"
                 value={formData.clientVision}
                 onChange={(e) => setFormData(prev => ({ ...prev, clientVision: e.target.value }))}
-                className="border border-gray-200 h-20 resize-none"
+                className="border border-gray-300 h-16 resize-none"
                 placeholder="Describe your ideal wedding vision, preferences, and any special requirements..."
               />
             </div>
@@ -207,7 +207,7 @@ export const CreateEventModal: React.FC<CreateEventModalProps> = ({ open, onOpen
             <div>
               <Label htmlFor="seatingStyle">Seating Style</Label>
               <Select value={formData.seatingStyle} onValueChange={(value) => setFormData(prev => ({ ...prev, seatingStyle: value }))}>
-                <SelectTrigger className="mt-1">
+                <SelectTrigger className="mt-1 border border-gray-300">
                   <SelectValue placeholder="Select seating style" />
                 </SelectTrigger>
                 <SelectContent>
@@ -263,7 +263,7 @@ export const CreateEventModal: React.FC<CreateEventModalProps> = ({ open, onOpen
                 id="colorSchemes"
                 value={formData.colorSchemes}
                 onChange={(e) => setFormData(prev => ({ ...prev, colorSchemes: e.target.value }))}
-                className="mt-1"
+                className="mt-1 border border-gray-300"
                 placeholder="e.g., Blush Pink & Gold, Royal Blue & Silver"
               />
             </div>
@@ -310,7 +310,7 @@ export const CreateEventModal: React.FC<CreateEventModalProps> = ({ open, onOpen
             <div>
               <Label htmlFor="cateringServiceType">Catering Service Type</Label>
               <Select value={formData.cateringServiceType} onValueChange={(value) => setFormData(prev => ({ ...prev, cateringServiceType: value }))}>
-                <SelectTrigger className="mt-1">
+                <SelectTrigger className="mt-1 border border-gray-300">
                   <SelectValue placeholder="Select catering type" />
                 </SelectTrigger>
                 <SelectContent>
@@ -353,15 +353,15 @@ export const CreateEventModal: React.FC<CreateEventModalProps> = ({ open, onOpen
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-7xl max-h-[90vh] w-[95vw] h-[85vh] p-0">
-        <DialogHeader className="px-6 py-4 border-b">
-          <DialogTitle className="text-2xl font-bold">Let's Create a New Event Blueprint</DialogTitle>
+      <DialogContent className="max-w-7xl max-h-[95vh] w-[95vw] h-[95vh] p-0">
+        <DialogHeader className="px-6 py-3 border-b">
+          <DialogTitle className="text-xl font-bold">Let's Create a New Event Blueprint</DialogTitle>
         </DialogHeader>
         
-        <div className="flex h-full">
+        <div className="flex h-[calc(100%-60px)]">
           {/* Left Column - Form */}
-          <div className="flex-1 p-6">
-            <div className="flex items-center mb-6">
+          <div className="flex-1 p-4">
+            <div className="flex items-center mb-4">
               <div className="flex space-x-2">
                 {[1, 2, 3, 4, 5].map(step => (
                   <div
@@ -379,13 +379,13 @@ export const CreateEventModal: React.FC<CreateEventModalProps> = ({ open, onOpen
               <span className="ml-4 text-sm text-muted-foreground">Step {currentStep} of 5</span>
             </div>
             
-            <ScrollArea className="h-[calc(100%-120px)] pr-4">
-              <div className="space-y-6 pr-2">
+            <ScrollArea className="h-[calc(100vh-220px)] pr-4">
+              <div className="space-y-4 pr-2">
                 {renderStep()}
               </div>
             </ScrollArea>
             
-            <div className="flex justify-between mt-6 pt-4 border-t">
+            <div className="flex justify-between mt-4 pt-3 border-t">
               <Button 
                 variant="outline" 
                 onClick={prevStep} 
@@ -440,7 +440,7 @@ export const CreateEventModal: React.FC<CreateEventModalProps> = ({ open, onOpen
                   onChange={(e) => setChatInput(e.target.value)}
                   placeholder="Ask PLANVIA AI..."
                   onKeyDown={(e) => e.key === 'Enter' && sendChatMessage()}
-                  className="flex-1"
+                  className="flex-1 border border-gray-300"
                 />
                 <Button size="icon" onClick={sendChatMessage}>
                   <Send className="h-4 w-4" />
