@@ -19,6 +19,7 @@ import {
   Music,
   Car
 } from "lucide-react";
+import DashboardLayout from '@/components/DashboardLayout';
 
 // Sample data
 const categories = [
@@ -207,8 +208,9 @@ const VendorsPage = () => {
   });
 
   return (
-    <div className="min-h-screen bg-[#f3d3da] p-6">
-      <div className="max-w-7xl mx-auto space-y-6">
+    <DashboardLayout>
+      <div className="p-6">
+        <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <div className="flex justify-between items-center">
           <div>
@@ -371,10 +373,11 @@ const VendorsPage = () => {
                 </Table>
               </CardContent>
             </Card>
-          </TabsContent>
-        </Tabs>
+        </TabsContent>
+      </Tabs>
+        </div>
       </div>
-    </div>
+    </DashboardLayout>
   );
 };
 

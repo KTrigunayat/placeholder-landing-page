@@ -1,48 +1,24 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { 
-  Home, 
-  Calendar, 
-  Users, 
-  CheckSquare, 
-  UserCheck, 
-  DollarSign, 
-  Users2 as Team, 
-  Package, 
-  MessageCircle,
-  Settings,
   Send,
   Plus,
-  CalendarDays,
-  LogOut
+  CalendarDays
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { CreateEventModal } from '@/components/CreateEventModal';
+import DashboardLayout from '@/components/DashboardLayout';
 
 const EventManagerDashboard = () => {
-  const navigate = useNavigate();
   const [createEventOpen, setCreateEventOpen] = useState(false);
   const [chatMessages, setChatMessages] = useState([
     { type: 'ai', content: 'Hello! I\'m here to help you plan your events. Ask me anything about vendor management, timeline planning, or budget optimization.' }
   ]);
   const [chatInput, setChatInput] = useState('');
-
-  const sidebarLinks = [
-    { name: 'Home', icon: Home, active: true },
-    { name: 'Events', icon: Calendar, active: false },
-    { name: 'Vendors', icon: Users, active: false },
-    { name: 'Tasks', icon: CheckSquare, active: false },
-    { name: 'CRM', icon: UserCheck, active: false },
-    { name: 'Finances', icon: DollarSign, active: false },
-    { name: 'Team', icon: Team, active: false },
-    { name: 'Inventory', icon: Package, active: false },
-    { name: 'Consultation', icon: MessageCircle, active: false },
-  ];
 
   const upcomingEvents = [
     { name: 'Johnson Wedding', date: 'Dec 15, 2024', progress: 75 },
@@ -56,9 +32,6 @@ const EventManagerDashboard = () => {
     'Send invitations to vendors'
   ];
 
-  const handleLogout = () => {
-    navigate('/');
-  };
 
   const sendChatMessage = () => {
     if (!chatInput.trim()) return;
@@ -71,61 +44,8 @@ const EventManagerDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex">
-      {/* Sidebar */}
-      <div className="w-64 bg-gray-900 flex flex-col">
-        {/* Top Logo */}
-        <div className="p-6 border-b border-gray-700">
-          <div className="text-white text-xl font-bold">PLANVIA</div>
-        </div>
-
-        {/* Navigation Links */}
-        <nav className="flex-1 px-4 py-6">
-          <ul className="space-y-2">
-            {sidebarLinks.map((link) => (
-              <li key={link.name}>
-                <a
-                  href={link.name === 'Vendors' ? '/dashboard/event-manager/vendors' : '#'}
-                  className={cn(
-                    "flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors",
-                    link.active
-                      ? "bg-primary text-primary-foreground"
-                      : "text-gray-300 hover:bg-gray-800 hover:text-white"
-                  )}
-                >
-                  <link.icon className="mr-3 h-5 w-5" />
-                  {link.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-          
-          {/* Logout Button */}
-          <div className="mt-4 pt-4 border-t border-gray-700">
-            <Button
-              onClick={handleLogout}
-              variant="ghost"
-              className="w-full justify-start text-gray-300 hover:bg-gray-800 hover:text-white"
-            >
-              <LogOut className="mr-3 h-5 w-5" />
-              Log Out
-            </Button>
-          </div>
-        </nav>
-
-        {/* Bottom Logo and Settings */}
-        <div className="p-4 border-t border-gray-700">
-          <div className="flex items-center justify-between">
-            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">P</span>
-            </div>
-            <Settings className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer" />
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="flex-1 p-8 bg-[#f3d3da]">
+    <DashboardLayout>
+      <div className="p-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold text-foreground">Welcome Back, Priya</h1>
@@ -274,7 +194,7 @@ const EventManagerDashboard = () => {
       
       {/* Create Event Modal */}
       <CreateEventModal open={createEventOpen} onOpenChange={setCreateEventOpen} />
-    </div>
+    </DashboardLayout>
   );
 };
 
