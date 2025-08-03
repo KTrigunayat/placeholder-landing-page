@@ -23,6 +23,7 @@ import VendorProfilePage from "./pages/vendor/VendorProfilePage";
 import VendorPaymentsPage from "./pages/vendor/VendorPaymentsPage";
 import VendorReviewsPage from "./pages/vendor/VendorReviewsPage";
 import VendorMessagesPage from "./pages/vendor/VendorMessagesPage";
+import VendorTasksPage from "./pages/vendor/VendorTasksPage";
 import VendorSettingsPage from "./pages/vendor/VendorSettingsPage";
 
 const queryClient = new QueryClient();
@@ -52,6 +53,7 @@ const App = () => (
           {/* Vendor Routes */}
           <Route path="/dashboard/vendor" element={<VendorDashboard />} />
           <Route path="/dashboard/vendor/events" element={<VendorEventsPage />} />
+          <Route path="/dashboard/vendor/tasks" element={<VendorTasksPage />} />
           <Route path="/dashboard/vendor/bookings" element={<VendorBookingsPage />} />
           <Route path="/dashboard/vendor/portfolio" element={<VendorPortfolioPage />} />
           <Route path="/dashboard/vendor/profile" element={<VendorProfilePage />} />

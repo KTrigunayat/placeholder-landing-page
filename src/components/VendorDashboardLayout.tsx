@@ -10,7 +10,8 @@ import {
   MessageSquare, 
   Settings,
   LogOut,
-  Camera
+  Camera,
+  CheckSquare
 } from 'lucide-react';
 
 interface VendorDashboardLayoutProps {
@@ -24,6 +25,7 @@ const VendorDashboardLayout: React.FC<VendorDashboardLayoutProps> = ({ children 
   const sidebarLinks = [
     { name: 'Dashboard', icon: LayoutDashboard, path: '/dashboard/vendor' },
     { name: 'Events', icon: Calendar, path: '/dashboard/vendor/events' },
+    { name: 'Tasks', icon: CheckSquare, path: '/dashboard/vendor/tasks' },
     { name: 'Bookings', icon: ShoppingBag, path: '/dashboard/vendor/bookings' },
     { name: 'Portfolio', icon: Camera, path: '/dashboard/vendor/portfolio' },
     { name: 'Profile', icon: User, path: '/dashboard/vendor/profile' },
