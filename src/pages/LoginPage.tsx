@@ -52,6 +52,11 @@ const LoginPage = () => {
     // Redirect to appropriate dashboard based on user type
     if (userType === 'event-manager') {
       window.location.href = '/dashboard/event-manager';
+    } else if (userType === 'vendor') {
+      window.location.href = '/dashboard/vendor';
+    } else if (userType === 'client') {
+      // Add client dashboard route when ready
+      window.location.href = '/dashboard/client';
     }
   };
 

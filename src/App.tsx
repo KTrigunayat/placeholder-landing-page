@@ -15,6 +15,15 @@ import FinancesPage from "./pages/FinancesPage";
 import TeamPage from "./pages/TeamPage";
 import InventoryPage from "./pages/InventoryPage";
 import ConsultationPage from "./pages/ConsultationPage";
+import VendorDashboard from "./pages/vendor/VendorDashboard";
+import VendorEventsPage from "./pages/vendor/VendorEventsPage";
+import VendorBookingsPage from "./pages/vendor/VendorBookingsPage";
+import VendorPortfolioPage from "./pages/vendor/VendorPortfolioPage";
+import VendorProfilePage from "./pages/vendor/VendorProfilePage";
+import VendorPaymentsPage from "./pages/vendor/VendorPaymentsPage";
+import VendorReviewsPage from "./pages/vendor/VendorReviewsPage";
+import VendorMessagesPage from "./pages/vendor/VendorMessagesPage";
+import VendorSettingsPage from "./pages/vendor/VendorSettingsPage";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +37,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/login/:userType" element={<LoginPage />} />
+          
+          {/* Event Manager Routes */}
           <Route path="/dashboard/event-manager" element={<EventManagerDashboard />} />
           <Route path="/dashboard/event-manager/events" element={<EventsPage />} />
           <Route path="/dashboard/event-manager/vendors" element={<VendorsPage />} />
@@ -37,6 +48,18 @@ const App = () => (
           <Route path="/dashboard/event-manager/team" element={<TeamPage />} />
           <Route path="/dashboard/event-manager/inventory" element={<InventoryPage />} />
           <Route path="/dashboard/event-manager/consultation" element={<ConsultationPage />} />
+          
+          {/* Vendor Routes */}
+          <Route path="/dashboard/vendor" element={<VendorDashboard />} />
+          <Route path="/dashboard/vendor/events" element={<VendorEventsPage />} />
+          <Route path="/dashboard/vendor/bookings" element={<VendorBookingsPage />} />
+          <Route path="/dashboard/vendor/portfolio" element={<VendorPortfolioPage />} />
+          <Route path="/dashboard/vendor/profile" element={<VendorProfilePage />} />
+          <Route path="/dashboard/vendor/payments" element={<VendorPaymentsPage />} />
+          <Route path="/dashboard/vendor/reviews" element={<VendorReviewsPage />} />
+          <Route path="/dashboard/vendor/messages" element={<VendorMessagesPage />} />
+          <Route path="/dashboard/vendor/settings" element={<VendorSettingsPage />} />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
