@@ -22,15 +22,15 @@ const VendorDashboardLayout: React.FC<VendorDashboardLayoutProps> = ({ children 
   const location = useLocation();
 
   const sidebarLinks = [
-    { name: 'Dashboard', icon: LayoutDashboard, path: '/vendor-dashboard' },
-    { name: 'Events', icon: Calendar, path: '/vendor-dashboard/events' },
-    { name: 'Bookings', icon: ShoppingBag, path: '/vendor-dashboard/bookings' },
-    { name: 'Portfolio', icon: Camera, path: '/vendor-dashboard/portfolio' },
-    { name: 'Profile', icon: User, path: '/vendor-dashboard/profile' },
-    { name: 'Payments', icon: DollarSign, path: '/vendor-dashboard/payments' },
-    { name: 'Reviews', icon: Star, path: '/vendor-dashboard/reviews' },
-    { name: 'Messages', icon: MessageSquare, path: '/vendor-dashboard/messages' },
-    { name: 'Settings', icon: Settings, path: '/vendor-dashboard/settings' },
+    { name: 'Dashboard', icon: LayoutDashboard, path: '/dashboard/vendor' },
+    { name: 'Events', icon: Calendar, path: '/dashboard/vendor/events' },
+    { name: 'Bookings', icon: ShoppingBag, path: '/dashboard/vendor/bookings' },
+    { name: 'Portfolio', icon: Camera, path: '/dashboard/vendor/portfolio' },
+    { name: 'Profile', icon: User, path: '/dashboard/vendor/profile' },
+    { name: 'Payments', icon: DollarSign, path: '/dashboard/vendor/payments' },
+    { name: 'Reviews', icon: Star, path: '/dashboard/vendor/reviews' },
+    { name: 'Messages', icon: MessageSquare, path: '/dashboard/vendor/messages' },
+    { name: 'Settings', icon: Settings, path: '/dashboard/vendor/settings' },
   ];
 
   const handleLogout = () => {
