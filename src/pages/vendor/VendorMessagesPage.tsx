@@ -149,7 +149,6 @@ const VendorMessagesPage: React.FC = () => {
                     onChange={(e) => setChatInput(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && sendChatMessage()}
                     className="flex-1 text-sm"
-                    size="sm"
                   />
                   <Button onClick={sendChatMessage} size="sm">
                     <Send className="h-3 w-3" />
@@ -186,7 +185,6 @@ const VendorMessagesPage: React.FC = () => {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="pl-10"
-                    size="sm"
                   />
                 </div>
               </CardHeader>
