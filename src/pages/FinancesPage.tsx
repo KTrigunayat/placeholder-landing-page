@@ -19,6 +19,7 @@ import {
   Wallet
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { AddTransactionModal } from '@/components/AddTransactionModal';
 
 const FinancesPage = () => {
   const [chatMessages, setChatMessages] = useState([
@@ -26,6 +27,7 @@ const FinancesPage = () => {
   ]);
   const [chatInput, setChatInput] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+  const [addTransactionOpen, setAddTransactionOpen] = useState(false);
 
   const financialStats = [
     { label: 'Total Revenue', value: '$127,450', color: 'text-green-600', trend: 'up', change: '+12%' },
@@ -125,7 +127,11 @@ const FinancesPage = () => {
             <h1 className="text-3xl font-bold text-foreground">Finances</h1>
             <p className="text-muted-foreground">Track expenses, revenue, and financial performance</p>
           </div>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full">
+          <Button 
+            size="lg" 
+            className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full"
+            onClick={() => setAddTransactionOpen(true)}
+          >
             <Plus className="mr-2 h-5 w-5" />
             ADD TRANSACTION
           </Button>
@@ -272,6 +278,9 @@ const FinancesPage = () => {
           </CardContent>
         </Card>
       </div>
+      
+      {/* Add Transaction Modal */}
+      <AddTransactionModal open={addTransactionOpen} onOpenChange={setAddTransactionOpen} />
     </DashboardLayout>
   );
 };

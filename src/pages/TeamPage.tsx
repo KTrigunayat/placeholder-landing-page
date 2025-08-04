@@ -19,6 +19,7 @@ import {
   Clock
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { AddTeamMemberModal } from '@/components/AddTeamMemberModal';
 
 const TeamPage = () => {
   const [chatMessages, setChatMessages] = useState([
@@ -26,6 +27,7 @@ const TeamPage = () => {
   ]);
   const [chatInput, setChatInput] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+  const [addTeamMemberOpen, setAddTeamMemberOpen] = useState(false);
 
   const teamStats = [
     { label: 'Total Members', value: 15, color: 'text-blue-600' },
@@ -136,7 +138,11 @@ const TeamPage = () => {
             <h1 className="text-3xl font-bold text-foreground">Team</h1>
             <p className="text-muted-foreground">Manage your team members, roles, and collaboration</p>
           </div>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full">
+          <Button 
+            size="lg" 
+            className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full"
+            onClick={() => setAddTeamMemberOpen(true)}
+          >
             <Plus className="mr-2 h-5 w-5" />
             ADD TEAM MEMBER
           </Button>
@@ -295,6 +301,9 @@ const TeamPage = () => {
           </CardContent>
         </Card>
       </div>
+      
+      {/* Add Team Member Modal */}
+      <AddTeamMemberModal open={addTeamMemberOpen} onOpenChange={setAddTeamMemberOpen} />
     </DashboardLayout>
   );
 };

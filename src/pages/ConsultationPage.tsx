@@ -20,6 +20,7 @@ import {
   CheckCircle
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ScheduleConsultationModal } from '@/components/ScheduleConsultationModal';
 
 const ConsultationPage = () => {
   const [chatMessages, setChatMessages] = useState([
@@ -27,6 +28,7 @@ const ConsultationPage = () => {
   ]);
   const [chatInput, setChatInput] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+  const [scheduleConsultationOpen, setScheduleConsultationOpen] = useState(false);
 
   const consultationStats = [
     { label: 'Scheduled Today', value: 5, color: 'text-blue-600' },
@@ -147,7 +149,11 @@ const ConsultationPage = () => {
             <h1 className="text-3xl font-bold text-foreground">Consultation</h1>
             <p className="text-muted-foreground">Manage client consultations and communication channels</p>
           </div>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full">
+          <Button 
+            size="lg" 
+            className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full"
+            onClick={() => setScheduleConsultationOpen(true)}
+          >
             <Plus className="mr-2 h-5 w-5" />
             SCHEDULE CONSULTATION
           </Button>
@@ -294,6 +300,9 @@ const ConsultationPage = () => {
           </CardContent>
         </Card>
       </div>
+      
+      {/* Schedule Consultation Modal */}
+      <ScheduleConsultationModal open={scheduleConsultationOpen} onOpenChange={setScheduleConsultationOpen} />
     </DashboardLayout>
   );
 };

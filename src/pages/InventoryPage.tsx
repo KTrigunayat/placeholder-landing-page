@@ -19,6 +19,7 @@ import {
   Truck
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { AddInventoryModal } from '@/components/AddInventoryModal';
 
 const InventoryPage = () => {
   const [chatMessages, setChatMessages] = useState([
@@ -26,6 +27,7 @@ const InventoryPage = () => {
   ]);
   const [chatInput, setChatInput] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+  const [addInventoryOpen, setAddInventoryOpen] = useState(false);
 
   const inventoryStats = [
     { label: 'Total Items', value: 324, color: 'text-blue-600' },
@@ -145,7 +147,11 @@ const InventoryPage = () => {
             <h1 className="text-3xl font-bold text-foreground">Inventory</h1>
             <p className="text-muted-foreground">Track and manage your event inventory and supplies</p>
           </div>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full">
+          <Button 
+            size="lg" 
+            className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full"
+            onClick={() => setAddInventoryOpen(true)}
+          >
             <Plus className="mr-2 h-5 w-5" />
             ADD INVENTORY ITEM
           </Button>
@@ -291,6 +297,9 @@ const InventoryPage = () => {
           </CardContent>
         </Card>
       </div>
+      
+      {/* Add Inventory Modal */}
+      <AddInventoryModal open={addInventoryOpen} onOpenChange={setAddInventoryOpen} />
     </DashboardLayout>
   );
 };

@@ -19,6 +19,7 @@ import {
   Heart
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { AddClientModal } from '@/components/AddClientModal';
 
 const CRMPage = () => {
   const [chatMessages, setChatMessages] = useState([
@@ -26,6 +27,7 @@ const CRMPage = () => {
   ]);
   const [chatInput, setChatInput] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+  const [addClientOpen, setAddClientOpen] = useState(false);
 
   const crmStats = [
     { label: 'Total Clients', value: 148, color: 'text-blue-600' },
@@ -124,7 +126,11 @@ const CRMPage = () => {
             <h1 className="text-3xl font-bold text-foreground">CRM</h1>
             <p className="text-muted-foreground">Manage client relationships and track customer interactions</p>
           </div>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full">
+          <Button 
+            size="lg" 
+            className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full"
+            onClick={() => setAddClientOpen(true)}
+          >
             <Plus className="mr-2 h-5 w-5" />
             ADD NEW CLIENT
           </Button>
@@ -272,6 +278,9 @@ const CRMPage = () => {
           </CardContent>
         </Card>
       </div>
+      
+      {/* Add Client Modal */}
+      <AddClientModal open={addClientOpen} onOpenChange={setAddClientOpen} />
     </DashboardLayout>
   );
 };
