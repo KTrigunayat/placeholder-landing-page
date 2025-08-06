@@ -27,8 +27,13 @@ import VendorTasksPage from "./pages/vendor/VendorTasksPage";
 import VendorSettingsPage from "./pages/vendor/VendorSettingsPage";
 import ClientDashboard from "./pages/client/ClientDashboard";
 import ClientEventProgress from "./pages/client/ClientEventProgress";
-import ClientCommunication from "./pages/client/ClientCommunication";
+import ClientTimeline from "./pages/client/ClientTimeline";
 import ClientDecisions from "./pages/client/ClientDecisions";
+import ClientCommunication from "./pages/client/ClientCommunication";
+import ClientGallery from "./pages/client/ClientGallery";
+import ClientDocuments from "./pages/client/ClientDocuments";
+import ClientTeam from "./pages/client/ClientTeam";
+import ClientSettings from "./pages/client/ClientSettings";
 
 const queryClient = new QueryClient();
 
@@ -69,13 +74,13 @@ const App = () => (
           {/* Client Dashboard Routes */}
           <Route path="/dashboard/client" element={<ClientDashboard />} />
           <Route path="/dashboard/client/progress" element={<ClientEventProgress />} />
-          <Route path="/dashboard/client/timeline" element={<ClientEventProgress />} />
+          <Route path="/dashboard/client/timeline" element={<ClientTimeline />} />
           <Route path="/dashboard/client/decisions" element={<ClientDecisions />} />
           <Route path="/dashboard/client/communication" element={<ClientCommunication />} />
-          <Route path="/dashboard/client/gallery" element={<ClientDashboard />} />
-          <Route path="/dashboard/client/documents" element={<ClientDashboard />} />
-          <Route path="/dashboard/client/team" element={<ClientDashboard />} />
-          <Route path="/dashboard/client/settings" element={<ClientDashboard />} />
+          <Route path="/dashboard/client/gallery" element={<ClientGallery />} />
+          <Route path="/dashboard/client/documents" element={<ClientDocuments />} />
+          <Route path="/dashboard/client/team" element={<ClientTeam />} />
+          <Route path="/dashboard/client/settings" element={<ClientSettings />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
