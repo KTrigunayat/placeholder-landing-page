@@ -25,6 +25,10 @@ import VendorReviewsPage from "./pages/vendor/VendorReviewsPage";
 import VendorMessagesPage from "./pages/vendor/VendorMessagesPage";
 import VendorTasksPage from "./pages/vendor/VendorTasksPage";
 import VendorSettingsPage from "./pages/vendor/VendorSettingsPage";
+import ClientDashboard from "./pages/client/ClientDashboard";
+import ClientEventProgress from "./pages/client/ClientEventProgress";
+import ClientCommunication from "./pages/client/ClientCommunication";
+import ClientDecisions from "./pages/client/ClientDecisions";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +65,17 @@ const App = () => (
           <Route path="/dashboard/vendor/reviews" element={<VendorReviewsPage />} />
           <Route path="/dashboard/vendor/messages" element={<VendorMessagesPage />} />
           <Route path="/dashboard/vendor/settings" element={<VendorSettingsPage />} />
+          
+          {/* Client Dashboard Routes */}
+          <Route path="/dashboard/client" element={<ClientDashboard />} />
+          <Route path="/dashboard/client/progress" element={<ClientEventProgress />} />
+          <Route path="/dashboard/client/timeline" element={<ClientEventProgress />} />
+          <Route path="/dashboard/client/decisions" element={<ClientDecisions />} />
+          <Route path="/dashboard/client/communication" element={<ClientCommunication />} />
+          <Route path="/dashboard/client/gallery" element={<ClientDashboard />} />
+          <Route path="/dashboard/client/documents" element={<ClientDashboard />} />
+          <Route path="/dashboard/client/team" element={<ClientDashboard />} />
+          <Route path="/dashboard/client/settings" element={<ClientDashboard />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
